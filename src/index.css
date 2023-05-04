@@ -1,5 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Roboto", sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -20,6 +21,11 @@
   margin: 0;
 }
 
+/* html {
+  font-size: 62.5%;
+  font-family: "Pretendard", sans-serif;
+} */
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -37,6 +43,7 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background-color: #fcf6e7;
 }
 
 h1 {
