@@ -35,13 +35,15 @@ function TodayDate() {
   const { year, month, day } = fomattedCurrentDate();
 
   return (
-    <div className="col">
-      <p className="day">{day}</p>
-      <div className="row">
-        <p className="month">{months[month]}</p>
-        <p className="year">{year}</p>
+    <>
+      <div className="col">
+        <p className="day">{day}</p>
+        <div className="row">
+          <p className="month">{months[month]}</p>
+          <p className="year">{year}</p>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
