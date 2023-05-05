@@ -1,0 +1,21 @@
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4rem;
+}
+
+.list-item-input {
+  width: 70%;
+  border: none;
+  font-size: 2rem;
+}
+
+.check-delete-area {
+  display: flex;
+  gap: 3rem;
+}
+
+.list-item-input:focus {
+  outline: none;
+  border-bottom: 1px solid black;
+}

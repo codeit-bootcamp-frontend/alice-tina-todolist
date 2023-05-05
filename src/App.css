@@ -20,3 +20,8 @@ header {
 .button-more {
   cursor: pointer;
 }
+
+main {
+  margin-left: 0.8rem;
+  margin-top: 1rem;
+}

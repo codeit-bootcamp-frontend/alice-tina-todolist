@@ -1,4 +1,4 @@
-import "/src/components/UnfinishedTasks.css"
+import "/src/components/Progress.css"
 
 function getUnfinishedTasks(totalTasks, finishedTasks) {
   const restTasks = totalTasks - finishedTasks;
