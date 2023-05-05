@@ -35,20 +35,19 @@ import "/src/components/TodoListItem.css";
 
 // export default TodoListItem;
 
-function TodoListItem({
-  id = 1,
-  isChecked = true,
-  listItem = "리액트 공부하기",
-  onInputChange,
-}) {
+function TodoListItem({ id, isChecked = true, listItem, onInputChange }) {
   const handleInputChange = (e) => {
     const nextValue = e.target.value;
-    onInputChange(nextValue);
+    onInputChange(id, nextValue);
   };
 
   return (
     <div className="list-item">
-      <input className="list-item-input" onChange={handleInputChange} value={listItem} />
+      <input
+        className="list-item-input"
+        onChange={handleInputChange}
+        value={listItem}
+      />
       <div className="check-delete-area">
         <Circle className="check" isChecked={isChecked} />
         <img className="delete" src={deleteIcon} />
