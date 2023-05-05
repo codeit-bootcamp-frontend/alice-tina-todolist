@@ -10,6 +10,7 @@
   margin: 0 auto;
   padding: 4rem;
   border-radius: 1.6rem;
+  position: relative;
 }
 
 header {
@@ -25,3 +26,5 @@ main {
   margin-left: 0.8rem;
   margin-top: 1rem;
 }
+
+
