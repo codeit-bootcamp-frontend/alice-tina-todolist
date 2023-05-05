@@ -6,11 +6,13 @@ import Progress from "/src/components/Progress.jsx";
 import TodoListItem from "/src/components/TodoListItem.jsx";
 import AddButton from "/src/components/AddButton.jsx";
 import Modal from "/src/components/Modal";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 function App() {
-  const [listItems, setListItems] = useState(null);
+  const [listItems, setListItems] = useState({});
   const [isShow, setIsShow] = useState(false);
+  const [idList, setIdList] = useState([]);
+  const newID = useRef(1);
 
   const obj = {
     1: {
@@ -22,8 +24,6 @@ function App() {
       title: "수영하기",
     },
   };
-
-  const idxList = [1, 2];
 
   // localStorage.setItem("obj", JSON.stringify(obj));
   // const myObj = JSON.parse(localStorage.getItem("obj"));
@@ -39,12 +39,19 @@ function App() {
     setListItems(myObj);
   };
 
-  const handleUpdate = (id, title) => {
+  const handleUpdate = (id, title, isCreate = false) => {
+    if (isCreate) {
+      setIdList([...idList, id]);
+      newID.current++;
+    }
+
     setListItems({
       ...listItems,
       [id]: title,
     });
   };
+
+  console.log(listItems);
 
   return (
     <div className="container">
@@ -55,22 +62,25 @@ function App() {
       </header>
       <main>
         <Progress />
-
         {listItems &&
-          idxList.map((idx) => (
+          idList.map((id) => (
             <TodoListItem
-              key={listItems[idx]?.id}
-              id={listItems[idx]?.id}
+              key={id}
+              id={id}
               onInputChange={handleUpdate}
-              listItem={listItems[idx]?.title}
+              listItem={listItems[id]}
             />
           ))}
       </main>
-      <AddButton onShow={setIsShow}/>
+      <AddButton onShow={setIsShow} />
       {isShow ? (
         <>
           <div className="dard-background"></div>
-          <Modal onCreate={() => console.log("create")} onDelete={setIsShow} />
+          <Modal
+            id={newID.current}
+            onCreate={handleUpdate}
+            onClose={setIsShow}
+          />
         </>
       ) : null}
     </div>

@@ -4,16 +4,25 @@ import { useState } from "react";
 
 const LIMIT = 20;
 
-function Modal({ onCreate, onDelete }) {
+function Modal({ id, onCreate, onClose }) {
   const [textLength, setTextLength] = useState(0);
+  const [inputValue, setInputValue] = useState("");
 
-  const handleTextLengthCheck = (e) => {
+  const handleGetInputInfo = (e) => {
+    const nextValue = e.target.value;
     const nextLength = e.target.value.length;
+
+    setInputValue(nextValue);
     setTextLength(nextLength);
   };
 
   const handleModalCancel = () => {
-    onDelete(false);
+    onClose(false);
+  };
+
+  const handleCreateItem = () => {
+    onCreate(id, inputValue, true);
+    onClose(false);
   };
 
   return (
@@ -29,17 +38,22 @@ function Modal({ onCreate, onDelete }) {
       <div className={styles.inputWrapper}>
         <textarea
           className={styles.modalInput}
+          value={inputValue}
           type="text"
           maxLength={LIMIT - 1}
           placeholder="할 일을 입력해주세요"
-          onChange={handleTextLengthCheck}
+          onChange={handleGetInputInfo}
         />
         <span
           className={styles.textLengthLimit}
         >{`${textLength}/${LIMIT}`}</span>
       </div>
 
-      <button className={styles.addButton} type="button" onClick={onCreate}>
+      <button
+        className={styles.addButton}
+        type="button"
+        onClick={handleCreateItem}
+      >
         추가하기
       </button>
     </div>
