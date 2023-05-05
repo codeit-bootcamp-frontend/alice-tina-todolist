@@ -51,7 +51,16 @@ function App() {
     });
   };
 
-  console.log(listItems);
+  const handleDeleteItem = (targetId) => {
+    delete listItems[targetId];
+    setListItems({ ...listItems });
+
+    const nextIdList = idList.filter((id) => id !== targetId);
+
+    setIdList(nextIdList);
+  };
+
+  console.log(idList, listItems);
 
   return (
     <div className="container">
@@ -69,6 +78,7 @@ function App() {
               id={id}
               onInputChange={handleUpdate}
               listItem={listItems[id]}
+              onDelete={handleDeleteItem}
             />
           ))}
       </main>
