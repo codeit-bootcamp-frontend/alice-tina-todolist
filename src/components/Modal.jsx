@@ -5,6 +5,7 @@ import { useState } from "react";
 const LIMIT = 20;
 
 function Modal({ id, onCreate, onClose }) {
+  console.log("modal:", id);
   const [textLength, setTextLength] = useState(0);
   const [inputValue, setInputValue] = useState("");
 
@@ -29,11 +30,7 @@ function Modal({ id, onCreate, onClose }) {
     <div className={styles.modalContainer}>
       <div className={styles.header}>
         <h1 className={styles.title}>✍할 일</h1>
-        <img
-          className={styles.cancelButton}
-          src={cancelIcon}
-          onClick={handleModalCancel}
-        />
+        <img className={styles.cancelButton} src={cancelIcon} onClick={handleModalCancel} />
       </div>
       <div className={styles.inputWrapper}>
         <textarea
@@ -44,16 +41,10 @@ function Modal({ id, onCreate, onClose }) {
           placeholder="할 일을 입력해주세요"
           onChange={handleGetInputInfo}
         />
-        <span
-          className={styles.textLengthLimit}
-        >{`${textLength}/${LIMIT}`}</span>
+        <span className={styles.textLengthLimit}>{`${textLength}/${LIMIT}`}</span>
       </div>
 
-      <button
-        className={styles.addButton}
-        type="button"
-        onClick={handleCreateItem}
-      >
+      <button className={styles.addButton} type="button" onClick={handleCreateItem}>
         추가하기
       </button>
     </div>

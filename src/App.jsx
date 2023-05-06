@@ -16,9 +16,12 @@ function App() {
 
   useEffect(() => {
     const localItems = JSON.parse(localStorage.getItem("listItems"));
-    if (localItems) {
+    const keys = Object.keys(localItems);
+
+    if (keys.length !== 0) {
+      newID.current = Number(keys[keys.length - 1]) + 1;
       setListItems(localItems);
-      setIdList(Object.keys(localItems));
+      setIdList(keys);
     }
   }, []);
 
@@ -26,27 +29,25 @@ function App() {
     localStorage.setItem("listItems", JSON.stringify(listItems));
   }, [listItems]);
 
-  const handleSetItems = () => {
-    localStorage.setItem("obj", JSON.stringify(obj));
-    const myObj = JSON.parse(localStorage.getItem("obj"));
-    setListItems(myObj);
-    setIdList(Object.keys(myObj));
-  };
-
   const handleInputUpdate = (id, title, isCreate = false) => {
     if (isCreate) {
+      console.log(id);
       setIdList([...idList, id]);
       newID.current++;
-    }
 
-    const deepcopy = JSON.parse(JSON.stringify(listItems));
-    setListItems({
-      ...deepcopy,
-      [id]: {
-        title,
-        checked: false,
-      },
-    });
+      const deepcopy = JSON.parse(JSON.stringify(listItems));
+      setListItems({
+        ...deepcopy,
+        [id]: {
+          title,
+          checked: false,
+        },
+      });
+    } else {
+      listItems[id].title = title;
+      const deepcopy = JSON.parse(JSON.stringify(listItems));
+      setListItems({ ...deepcopy });
+    }
   };
 
   const handleCheckedUpdate = (id, checked) => {
@@ -66,15 +67,25 @@ function App() {
     setIdList(nextIdList);
   };
 
+  const getFinishedTasks = () => {
+    let totalTasks = 0;
+    for (const value of Object.values(listItems)) {
+      if (value.checked) {
+        totalTasks++;
+      }
+    }
+    console.log(totalTasks);
+    return totalTasks;
+  };
+
   return (
     <div className="container">
-      <button onClick={handleSetItems}>클릭!</button>
       <header>
         <TodayDate></TodayDate>
         <img className="button-more" src={kebabIcon}></img>
       </header>
       <main>
-        <Progress />
+        <Progress total={idList.length} finished={getFinishedTasks()} />
         {listItems &&
           idList.map((id) => (
             <TodoListItem

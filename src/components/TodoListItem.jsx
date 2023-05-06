@@ -17,8 +17,6 @@ function TodoListItem({ id, listItem, onInputChange, onCheckedChange, onDelete }
     onDelete(id);
   };
 
-  console.log("item:", listItem);
-
   return (
     <div className="list-item">
       <input className="list-item-input" onChange={handleInputChange} value={listItem.title} />

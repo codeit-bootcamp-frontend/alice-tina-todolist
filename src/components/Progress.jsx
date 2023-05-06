@@ -1,4 +1,4 @@
-import "/src/components/Progress.css"
+import "/src/components/Progress.css";
 
 function getUnfinishedTasks(totalTasks, finishedTasks) {
   const restTasks = totalTasks - finishedTasks;
@@ -19,8 +19,8 @@ function getUnfinishedTasks(totalTasks, finishedTasks) {
   return `${restTasks} Tasks${progressEmoji}`;
 }
 
-function UnfinishedTasks({ totalTasks = 10, finishedTasks = 3 }) {
-  return <p className="tasks">{getUnfinishedTasks(totalTasks, finishedTasks)}</p>;
+function Progress({ total, finished }) {
+  return <p className="tasks">{getUnfinishedTasks(total, finished)}</p>;
 }
 
-export default UnfinishedTasks;
+export default Progress;
