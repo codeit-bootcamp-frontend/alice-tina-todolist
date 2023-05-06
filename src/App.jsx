@@ -39,28 +39,38 @@ function App() {
     setListItems(myObj);
   };
 
-  const handleUpdate = (id, title, isCreate = false) => {
+  const handleInputUpdate = (id, title, isCreate = false) => {
     if (isCreate) {
       setIdList([...idList, id]);
       newID.current++;
     }
 
+    const deepcopy = JSON.parse(JSON.stringify(listItems));
     setListItems({
-      ...listItems,
-      [id]: title,
+      ...deepcopy,
+      [id]: {
+        title,
+        checked: false,
+      },
+    });
+  };
+
+  const handleCheckedUpdate = (id, checked) => {
+    listItems[id].checked = checked;
+    const deepcopy = JSON.parse(JSON.stringify(listItems));
+    setListItems({
+      ...deepcopy,
     });
   };
 
   const handleDeleteItem = (targetId) => {
     delete listItems[targetId];
-    setListItems({ ...listItems });
+    const deepcopy = JSON.parse(JSON.stringify(listItems));
+    setListItems({ ...deepcopy });
 
     const nextIdList = idList.filter((id) => id !== targetId);
-
     setIdList(nextIdList);
   };
-
-  console.log(idList, listItems);
 
   return (
     <div className="container">
@@ -76,8 +86,9 @@ function App() {
             <TodoListItem
               key={id}
               id={id}
-              onInputChange={handleUpdate}
               listItem={listItems[id]}
+              onInputChange={handleInputUpdate}
+              onCheckedChange={handleCheckedUpdate}
               onDelete={handleDeleteItem}
             />
           ))}
@@ -86,11 +97,7 @@ function App() {
       {isShow ? (
         <>
           <div className="dard-background"></div>
-          <Modal
-            id={newID.current}
-            onCreate={handleUpdate}
-            onClose={setIsShow}
-          />
+          <Modal id={newID.current} onCreate={handleInputUpdate} onClose={setIsShow} />
         </>
       ) : null}
     </div>
