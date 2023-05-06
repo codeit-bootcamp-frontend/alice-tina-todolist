@@ -31,7 +31,6 @@ function App() {
 
   const handleInputUpdate = (id, title, isCreate = false) => {
     if (isCreate) {
-      console.log(id);
       setIdList([...idList, id]);
       newID.current++;
 
@@ -74,7 +73,6 @@ function App() {
         totalTasks++;
       }
     }
-    console.log(totalTasks);
     return totalTasks;
   };
 

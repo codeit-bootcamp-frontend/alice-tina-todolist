@@ -1,16 +1,28 @@
 .list-item {
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
   margin-top: 4rem;
+  gap: 2rem;
+}
+
+.input-box {
+  width: 100%;
+  position: relative;
 }
 
 .list-item-input {
-  width: 70%;
+  width: 100%;
   border: none;
   font-size: 2rem;
+  margin-bottom: 0.5rem;
 }
 
-.check-delete-area {
+.error {
+  border-bottom: 1px solid red;
+}
+
+.check-delete-box {
   display: flex;
   gap: 3rem;
 }
@@ -18,4 +30,18 @@
 .list-item-input:focus {
   outline: none;
   border-bottom: 1px solid black;
+}
+
+.error:focus {
+  border-bottom: 1px solid red;
+}
+
+.error-box {
+  display: flex;
+  position: absolute;
+  right: 0;
+}
+
+.error-message {
+  color: red;
 }
