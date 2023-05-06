@@ -7,13 +7,15 @@ import TodoListItem from "/src/components/TodoListItem.jsx";
 import AddButton from "/src/components/AddButton.jsx";
 import Modal from "/src/components/Modal";
 import purpleDdopi from "/src/assets/purple-ddopi.png";
+import blueDdopi from "/src/assets/blue-ddopi.png";
+import pinkDdopi from "/src/assets/pink-ddopi.png";
 import { useEffect, useRef, useState } from "react";
 
 function App() {
   const [listItems, setListItems] = useState({});
   const [isShow, setIsShow] = useState(false);
   const [idList, setIdList] = useState([]);
-  const [themeColor, setThemeColor] = useState("pink");
+  const [themeColor, setThemeColor] = useState("purple");
   const newID = useRef(1);
 
   useEffect(() => {
@@ -78,6 +80,16 @@ function App() {
     return totalTasks;
   };
 
+  const getDdopi = () => {
+    if (themeColor === "purple") {
+      return <img src={purpleDdopi} className="ddopi" />;
+    } else if (themeColor === "blue") {
+      return <img src={blueDdopi} className="ddopi" />;
+    } else {
+      return <img src={pinkDdopi} className="ddopi" />;
+    }
+  };
+
   return (
     <div className="container">
       <header>
@@ -85,7 +97,7 @@ function App() {
         <img className="button-more" src={kebabIcon}></img>
       </header>
       <main>
-        <Progress total={idList.length} finished={getFinishedTasks()} />
+        <Progress total={idList.length} finished={getFinishedTasks()} color={themeColor} />
         <div className="list-container">
           {listItems &&
             idList.map((id) => (
@@ -101,12 +113,12 @@ function App() {
         </div>
         {idList.length === 0 && (
           <>
-            <img className="ddopi" src={purpleDdopi} />
+            {getDdopi()}
             <p className="intro">멋진 하루를 계획해 봐요 :&#41;</p>
           </>
         )}
       </main>
-      <AddButton onShow={setIsShow} />
+      <AddButton onShow={setIsShow} color={themeColor} />
       {isShow ? (
         <>
           <div className="dard-background"></div>

@@ -1,5 +1,16 @@
 .tasks {
   font-size: 2.2rem;
-  color: #744ef6;
   font-weight: 500;
+}
+
+.purple {
+  color: #744ef6;
+}
+
+.blue {
+  color: #19acff;
+}
+
+.pink {
+  color: #ff739d;
 }

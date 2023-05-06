@@ -19,8 +19,9 @@ function getUnfinishedTasks(totalTasks, finishedTasks) {
   return `${restTasks} Tasks${progressEmoji}`;
 }
 
-function Progress({ total, finished }) {
-  return <p className="tasks">{getUnfinishedTasks(total, finished)}</p>;
+function Progress({ total, finished, color }) {
+  const classes = `tasks ${color}`;
+  return <p className={classes}>{getUnfinishedTasks(total, finished)}</p>;
 }
 
 export default Progress;
