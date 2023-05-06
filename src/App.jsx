@@ -6,7 +6,7 @@ import Progress from "/src/components/Progress.jsx";
 import TodoListItem from "/src/components/TodoListItem.jsx";
 import AddButton from "/src/components/AddButton.jsx";
 import Modal from "/src/components/Modal";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function App() {
   const [listItems, setListItems] = useState({});
@@ -14,29 +14,23 @@ function App() {
   const [idList, setIdList] = useState([]);
   const newID = useRef(1);
 
-  const obj = {
-    1: {
-      id: 1,
-      title: "리액트 공부",
-    },
-    2: {
-      id: 2,
-      title: "수영하기",
-    },
-  };
+  useEffect(() => {
+    const localItems = JSON.parse(localStorage.getItem("listItems"));
+    if (localItems) {
+      setListItems(localItems);
+      setIdList(Object.keys(localItems));
+    }
+  }, []);
 
-  // localStorage.setItem("obj", JSON.stringify(obj));
-  // const myObj = JSON.parse(localStorage.getItem("obj"));
-  // console.log(myObj);
-
-  // useEffect(() => {
-  //   // localstorage 저장
-  // }, [listItems])
+  useEffect(() => {
+    localStorage.setItem("listItems", JSON.stringify(listItems));
+  }, [listItems]);
 
   const handleSetItems = () => {
     localStorage.setItem("obj", JSON.stringify(obj));
     const myObj = JSON.parse(localStorage.getItem("obj"));
     setListItems(myObj);
+    setIdList(Object.keys(myObj));
   };
 
   const handleInputUpdate = (id, title, isCreate = false) => {
