@@ -6,12 +6,14 @@ import Progress from "/src/components/Progress.jsx";
 import TodoListItem from "/src/components/TodoListItem.jsx";
 import AddButton from "/src/components/AddButton.jsx";
 import Modal from "/src/components/Modal";
+import purpleDdopi from "/src/assets/purple-ddopi.png";
 import { useEffect, useRef, useState } from "react";
 
 function App() {
   const [listItems, setListItems] = useState({});
   const [isShow, setIsShow] = useState(false);
   const [idList, setIdList] = useState([]);
+  const [themeColor, setThemeColor] = useState("pink");
   const newID = useRef(1);
 
   useEffect(() => {
@@ -97,6 +99,12 @@ function App() {
               />
             ))}
         </div>
+        {idList.length === 0 && (
+          <>
+            <img className="ddopi" src={purpleDdopi} />
+            <p className="intro">멋진 하루를 계획해 봐요 :&#41;</p>
+          </>
+        )}
       </main>
       <AddButton onShow={setIsShow} />
       {isShow ? (

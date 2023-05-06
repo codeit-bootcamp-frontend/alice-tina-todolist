@@ -14,7 +14,6 @@ function TodoListItem({ id, listItem, onInputChange, onCheckedChange, onDelete }
 
     if (!e.target.value) setIsEmptyValue(true);
     else setIsEmptyValue(false);
-    // 여기서 인풋 입력값 아예 없는 경우 처리??
   };
 
   const handleCheckedChange = () => {
@@ -41,8 +40,10 @@ function TodoListItem({ id, listItem, onInputChange, onCheckedChange, onDelete }
               <p className="error-message">할 일을 입력해주세요.</p>
             </div>
           </>
+        ) : listItem.checked ? (
+          <input className="list-item-input line-thorugh text-blot" onChange={handleInputChange} value={listItem.title} />
         ) : (
-          <input className="list-item-input" onChange={handleInputChange} value={listItem.title} />
+          <input className="list-item-input line-thorugh" onChange={handleInputChange} value={listItem.title} />
         )}
       </div>
       <div className="check-delete-box">

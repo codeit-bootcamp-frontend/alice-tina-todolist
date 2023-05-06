@@ -44,3 +44,7 @@
 .error-message {
   color: red;
 }
+
+.text-blot {
+  text-decoration: line-through;
+}
