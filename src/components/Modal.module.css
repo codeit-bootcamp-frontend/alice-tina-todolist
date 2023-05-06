@@ -52,4 +52,15 @@
   padding: 2rem 0;
   font-size: 1.7rem;
   font-weight: 500;
+  margin-top: 3rem;
+}
+
+.errorBox {
+  display: flex;
+  position: absolute;
+  right: 0;
+}
+
+.errorMessage {
+  color: red;
 }

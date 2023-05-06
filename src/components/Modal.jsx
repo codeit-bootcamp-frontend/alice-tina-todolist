@@ -1,13 +1,14 @@
 import styles from "/src/components/Modal.module.css";
 import cancelIcon from "/src/assets/cancel.svg";
 import { useState } from "react";
+import errorIcon from "/src/assets/error-message-icon.svg";
 
 const LIMIT = 20;
 
 function Modal({ id, onCreate, onClose }) {
-  console.log("modal:", id);
   const [textLength, setTextLength] = useState(0);
   const [inputValue, setInputValue] = useState("");
+  const [isEmptyValue, setIsEmptyValue] = useState(false);
 
   const handleGetInputInfo = (e) => {
     const nextValue = e.target.value;
@@ -22,6 +23,10 @@ function Modal({ id, onCreate, onClose }) {
   };
 
   const handleCreateItem = () => {
+    if (!inputValue) {
+      setIsEmptyValue(true);
+      return;
+    }
     onCreate(id, inputValue, true);
     onClose(false);
   };
@@ -42,8 +47,13 @@ function Modal({ id, onCreate, onClose }) {
           onChange={handleGetInputInfo}
         />
         <span className={styles.textLengthLimit}>{`${textLength}/${LIMIT}`}</span>
+        {isEmptyValue && (
+          <div className={styles.errorBox}>
+            <img className={styles.errorIcon} src={errorIcon} />
+            <p className={styles.errorMessage}>할 일을 입력해주세요.</p>
+          </div>
+        )}
       </div>
-
       <button className={styles.addButton} type="button" onClick={handleCreateItem}>
         추가하기
       </button>

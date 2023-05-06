@@ -84,17 +84,19 @@ function App() {
       </header>
       <main>
         <Progress total={idList.length} finished={getFinishedTasks()} />
-        {listItems &&
-          idList.map((id) => (
-            <TodoListItem
-              key={id}
-              id={id}
-              listItem={listItems[id]}
-              onInputChange={handleInputUpdate}
-              onCheckedChange={handleCheckedUpdate}
-              onDelete={handleDeleteItem}
-            />
-          ))}
+        <div className="list-container">
+          {listItems &&
+            idList.map((id) => (
+              <TodoListItem
+                key={id}
+                id={id}
+                listItem={listItems[id]}
+                onInputChange={handleInputUpdate}
+                onCheckedChange={handleCheckedUpdate}
+                onDelete={handleDeleteItem}
+              />
+            ))}
+        </div>
       </main>
       <AddButton onShow={setIsShow} />
       {isShow ? (
