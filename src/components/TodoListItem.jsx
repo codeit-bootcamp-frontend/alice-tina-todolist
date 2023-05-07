@@ -36,6 +36,12 @@ function TodoListItem({ id, listItem, onInputChange, onCheckedChange, onDelete, 
     }
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key == "Enter") {
+      e.target.blur();
+    }
+  };
+
   useEffect(() => {
     if (!listItem.title) setIsEmptyValue(true);
     else setIsEmptyValue(false);
@@ -53,9 +59,9 @@ function TodoListItem({ id, listItem, onInputChange, onCheckedChange, onDelete, 
             </div>
           </>
         ) : listItem.checked ? (
-          <input className="list-item-input line-thorugh text-blot" onChange={handleInputChange} value={listItem.title} />
+          <input className="list-item-input text-blot" onChange={handleInputChange} value={listItem.title} onKeyDown={handleKeyDown} />
         ) : (
-          <input className="list-item-input line-thorugh" onChange={handleInputChange} value={listItem.title} />
+          <input className="list-item-input" onChange={handleInputChange} value={listItem.title} onKeyDown={handleKeyDown} />
         )}
       </div>
       <div className="check-delete-box">
