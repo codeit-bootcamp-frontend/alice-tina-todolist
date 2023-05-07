@@ -31,6 +31,12 @@ function Modal({ id, onCreate, onClose, color = "purple" }) {
     onClose(false);
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key == "Enter") {
+      handleCreateItem();
+    }
+  };
+
   return (
     <div className={styles.modalContainer}>
       <div className={styles.header}>
@@ -45,6 +51,7 @@ function Modal({ id, onCreate, onClose, color = "purple" }) {
           maxLength={LIMIT - 1}
           placeholder="할 일을 입력해주세요"
           onChange={handleGetInputInfo}
+          onKeyDown={handleKeyDown}
         />
         <span className={styles.textLengthLimit}>{`${textLength}/${LIMIT}`}</span>
         {isEmptyValue && (
