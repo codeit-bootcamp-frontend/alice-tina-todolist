@@ -39,6 +39,7 @@ main {
   display: flex;
   flex-direction: column;
   gap: 4rem;
+  height: 100%;
   margin-top: 3rem;
   overflow: auto;
   -ms-overflow-style: none;

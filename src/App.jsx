@@ -22,6 +22,7 @@ function App() {
 
   useEffect(() => {
     const localItems = JSON.parse(localStorage.getItem("listItems"));
+    const localThemeColor = JSON.parse(localStorage.getItem("themeColor"));
 
     if (localItems) {
       const keys = Object.keys(localItems);
@@ -31,11 +32,19 @@ function App() {
         setIdList(keys);
       }
     }
+
+    if (localThemeColor) {
+      setThemeColor(localThemeColor);
+    }
   }, []);
 
   useEffect(() => {
     localStorage.setItem("listItems", JSON.stringify(listItems));
   }, [listItems]);
+
+  useEffect(() => {
+    localStorage.setItem("themeColor", JSON.stringify(themeColor));
+  }, [themeColor]);
 
   const handleInputUpdate = (id, title, isCreate = false) => {
     if (isCreate) {
