@@ -6,6 +6,7 @@ import Progress from "/src/components/Progress.jsx";
 import TodoListItem from "/src/components/TodoListItem.jsx";
 import AddButton from "/src/components/AddButton.jsx";
 import Modal from "/src/components/Modal";
+import ThemeModal from "./components/ThemeModal";
 import purpleDdopi from "/src/assets/purple-ddopi.png";
 import blueDdopi from "/src/assets/blue-ddopi.png";
 import pinkDdopi from "/src/assets/pink-ddopi.png";
@@ -13,19 +14,22 @@ import { useEffect, useRef, useState } from "react";
 
 function App() {
   const [listItems, setListItems] = useState({});
-  const [isShow, setIsShow] = useState(false);
+  const [isShowingModal, setIsShowingModal] = useState(false);
+  const [isShowingTheme, setIsShowingTheme] = useState(false);
   const [idList, setIdList] = useState([]);
   const [themeColor, setThemeColor] = useState("purple");
   const newID = useRef(1);
 
   useEffect(() => {
     const localItems = JSON.parse(localStorage.getItem("listItems"));
-    const keys = Object.keys(localItems);
 
-    if (keys.length !== 0) {
-      newID.current = Number(keys[keys.length - 1]) + 1;
-      setListItems(localItems);
-      setIdList(keys);
+    if (localItems) {
+      const keys = Object.keys(localItems);
+      if (keys.length !== 0) {
+        newID.current = Number(keys[keys.length - 1]) + 1;
+        setListItems(localItems);
+        setIdList(keys);
+      }
     }
   }, []);
 
@@ -90,11 +94,16 @@ function App() {
     }
   };
 
+  const handleToggleTheme = () => {
+    setIsShowingTheme(!isShowingTheme);
+  };
+
   return (
     <div className="container">
       <header>
         <TodayDate></TodayDate>
-        <img className="button-more" src={kebabIcon}></img>
+        <img className="button-more" src={kebabIcon} onClick={handleToggleTheme}></img>
+        {isShowingTheme && <ThemeModal />}
       </header>
       <main>
         <Progress total={idList.length} finished={getFinishedTasks()} color={themeColor} />
@@ -118,11 +127,11 @@ function App() {
           </>
         )}
       </main>
-      <AddButton onShow={setIsShow} color={themeColor} />
-      {isShow ? (
+      <AddButton onShow={setIsShowingModal} color={themeColor} />
+      {isShowingModal ? (
         <>
           <div className="dard-background"></div>
-          <Modal id={newID.current} onCreate={handleInputUpdate} onClose={setIsShow} />
+          <Modal id={newID.current} onCreate={handleInputUpdate} onClose={setIsShowingModal} />
         </>
       ) : null}
     </div>
