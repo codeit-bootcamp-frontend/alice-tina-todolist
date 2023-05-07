@@ -7,7 +7,7 @@ function fomattedCurrentDate() {
 
   const year = createdTime.getFullYear();
   const month = createdTime.getMonth();
-  const day = createdTime.getDay();
+  const day = createdTime.getDate();
 
   return {
     year: year,
