@@ -42,7 +42,7 @@ body {
   display: flex;
   place-items: center;
   min-width: 320px;
-  min-height: 100vh;
+  height: 100vh;
   background-color: #fcf6e7;
 }
 
