@@ -46,7 +46,7 @@ function App() {
     localStorage.setItem("themeColor", JSON.stringify(themeColor));
   }, [themeColor]);
 
-  const handleInputUpdate = (id, title, isCreate = false) => {
+  const handleInputUpdate = (id, value, isCreate = false) => {
     if (isCreate) {
       setIdList([...idList, id]);
       newID.current++;
@@ -55,12 +55,12 @@ function App() {
       setListItems({
         ...deepcopy,
         [id]: {
-          title,
+          value,
           checked: false,
         },
       });
     } else {
-      listItems[id].title = title;
+      listItems[id].value = value;
       const deepcopy = JSON.parse(JSON.stringify(listItems));
       setListItems({ ...deepcopy });
     }

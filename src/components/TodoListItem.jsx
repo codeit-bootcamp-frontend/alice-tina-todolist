@@ -43,7 +43,7 @@ function TodoListItem({ id, listItem, onInputChange, onCheckedChange, onDelete, 
   };
 
   useEffect(() => {
-    if (!listItem.title) setIsEmptyValue(true);
+    if (!listItem.value) setIsEmptyValue(true);
     else setIsEmptyValue(false);
   }, []);
 
@@ -52,16 +52,16 @@ function TodoListItem({ id, listItem, onInputChange, onCheckedChange, onDelete, 
       <div className="input-box">
         {isEmptyValue ? (
           <>
-            <input className="list-item-input error" onChange={handleInputChange} value={listItem.title} />
+            <input className="list-item-input error" onChange={handleInputChange} value={listItem.value} />
             <div className="error-box">
               <img className="error-icon" src={errorIcon} />
               <p className="error-message">할 일을 입력해주세요.</p>
             </div>
           </>
         ) : listItem.checked ? (
-          <input className="list-item-input text-blot" onChange={handleInputChange} value={listItem.title} onKeyDown={handleKeyDown} />
+          <input className="list-item-input text-blot" onChange={handleInputChange} value={listItem.value} onKeyDown={handleKeyDown} />
         ) : (
-          <input className="list-item-input" onChange={handleInputChange} value={listItem.title} onKeyDown={handleKeyDown} />
+          <input className="list-item-input" onChange={handleInputChange} value={listItem.value} onKeyDown={handleKeyDown} />
         )}
       </div>
       <div className="check-delete-box">
