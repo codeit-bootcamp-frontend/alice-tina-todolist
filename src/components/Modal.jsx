@@ -5,7 +5,7 @@ import errorIcon from "/src/assets/error-message-icon.svg";
 
 const LIMIT = 20;
 
-function Modal({ id, onCreate, onClose }) {
+function Modal({ id, onCreate, onClose, color = "purple" }) {
   const [textLength, setTextLength] = useState(0);
   const [inputValue, setInputValue] = useState("");
   const [isEmptyValue, setIsEmptyValue] = useState(false);
@@ -54,7 +54,7 @@ function Modal({ id, onCreate, onClose }) {
           </div>
         )}
       </div>
-      <button className={styles.addButton} type="button" onClick={handleCreateItem}>
+      <button className={`${styles.addButton} ${styles[color]}`} type="button" onClick={handleCreateItem}>
         추가하기
       </button>
     </div>

@@ -48,11 +48,22 @@
 }
 
 .addButton {
-  background-color: #a3a6ff;
   padding: 2rem 0;
   font-size: 1.7rem;
   font-weight: 500;
   margin-top: 3rem;
+}
+
+.purple {
+  background-color: #a3a6ff;
+}
+
+.blue {
+  background-color: #4dd4ff;
+}
+
+.pink {
+  background-color: #ffc3d5;
 }
 
 .errorBox {

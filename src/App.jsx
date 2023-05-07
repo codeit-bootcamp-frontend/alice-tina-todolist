@@ -103,7 +103,7 @@ function App() {
       <header>
         <TodayDate></TodayDate>
         <img className="button-more" src={kebabIcon} onClick={handleToggleTheme}></img>
-        {isShowingTheme && <ThemeModal />}
+        {isShowingTheme && <ThemeModal onChange={setThemeColor} />}
       </header>
       <main>
         <Progress total={idList.length} finished={getFinishedTasks()} color={themeColor} />
@@ -117,6 +117,7 @@ function App() {
                 onInputChange={handleInputUpdate}
                 onCheckedChange={handleCheckedUpdate}
                 onDelete={handleDeleteItem}
+                color={themeColor}
               />
             ))}
         </div>
@@ -131,7 +132,7 @@ function App() {
       {isShowingModal ? (
         <>
           <div className="dard-background"></div>
-          <Modal id={newID.current} onCreate={handleInputUpdate} onClose={setIsShowingModal} />
+          <Modal id={newID.current} onCreate={handleInputUpdate} onClose={setIsShowingModal} color={themeColor} />
         </>
       ) : null}
     </div>

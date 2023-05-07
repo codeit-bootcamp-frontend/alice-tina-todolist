@@ -1,11 +1,13 @@
 import deleteIcon from "/src/assets/delete.svg";
-import checkCircleIcon from "/src/assets/check-circle.svg";
+import purpleCheckedCircleIcon from "/src/assets/purple-checked-circle.svg";
+import blueCheckedCircleIcon from "/src/assets/blue-checked-circle.svg";
+import pinkCheckedCircleIcon from "/src/assets/pink-checked-circle.svg";
 import emptyCircleIcon from "/src/assets/empty-circle.svg";
 import errorIcon from "/src/assets/error-message-icon.svg";
 import "/src/components/TodoListItem.css";
 import { useEffect, useState } from "react";
 
-function TodoListItem({ id, listItem, onInputChange, onCheckedChange, onDelete }) {
+function TodoListItem({ id, listItem, onInputChange, onCheckedChange, onDelete, color = "purple" }) {
   const [isEmptyValue, setIsEmptyValue] = useState(false);
 
   const handleInputChange = (e) => {
@@ -22,6 +24,16 @@ function TodoListItem({ id, listItem, onInputChange, onCheckedChange, onDelete }
 
   const handleDelete = () => {
     onDelete(id);
+  };
+
+  const getCheckedCircle = () => {
+    if (color === "purple") {
+      return <img className="circle-icon" src={purpleCheckedCircleIcon} onClick={handleCheckedChange} />;
+    } else if (color === "blue") {
+      return <img className="circle-icon" src={blueCheckedCircleIcon} onClick={handleCheckedChange} />;
+    } else {
+      return <img className="circle-icon" src={pinkCheckedCircleIcon} onClick={handleCheckedChange} />;
+    }
   };
 
   useEffect(() => {
@@ -47,11 +59,7 @@ function TodoListItem({ id, listItem, onInputChange, onCheckedChange, onDelete }
         )}
       </div>
       <div className="check-delete-box">
-        {listItem.checked ? (
-          <img className="circle-icon" src={checkCircleIcon} onClick={handleCheckedChange} />
-        ) : (
-          <img className="circle-icon" src={emptyCircleIcon} onClick={handleCheckedChange} />
-        )}
+        {listItem.checked ? getCheckedCircle() : <img className="circle-icon" src={emptyCircleIcon} onClick={handleCheckedChange} />}
         <img className="delete" src={deleteIcon} onClick={handleDelete} />
       </div>
     </div>
