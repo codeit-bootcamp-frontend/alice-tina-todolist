@@ -55,8 +55,8 @@ main {
 }
 
 .intro {
-  font-size: 2rem;
+  font-family: "Gaegu", cursive;
+  font-size: 2.4rem;
   display: block;
   margin: 2rem auto;
-  font-weight: bold;
 }
