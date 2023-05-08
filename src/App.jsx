@@ -140,7 +140,7 @@ function App() {
       <AddButton onShow={setIsShowingModal} color={themeColor} />
       {isShowingModal ? (
         <>
-          <div className="dard-background"></div>
+          <div className="dark-background"></div>
           <Modal id={newID.current} onCreate={handleInputUpdate} onClose={setIsShowingModal} color={themeColor} />
         </>
       ) : null}

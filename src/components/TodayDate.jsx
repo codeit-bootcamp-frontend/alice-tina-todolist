@@ -2,7 +2,7 @@ import "/src/App.css";
 import "/src/common/reset.css";
 import "/src/components/TodayDate.css";
 
-function fomattedCurrentDate() {
+function formattedCurrentDate() {
   let createdTime = new Date();
 
   const year = createdTime.getFullYear();
@@ -32,7 +32,7 @@ const months = {
 };
 
 function TodayDate() {
-  const { year, month, day } = fomattedCurrentDate();
+  const { year, month, day } = formattedCurrentDate();
 
   return (
     <>
