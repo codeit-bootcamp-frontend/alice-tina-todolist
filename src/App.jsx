@@ -20,9 +20,6 @@ function App() {
   const [themeColor, setThemeColor] = useState("purple");
   const newID = useRef(1);
 
-  console.log(idList);
-  console.log(listItems);
-
   useEffect(() => {
     const localItems = JSON.parse(localStorage.getItem("listItems"));
     const localThemeColor = JSON.parse(localStorage.getItem("themeColor"));
