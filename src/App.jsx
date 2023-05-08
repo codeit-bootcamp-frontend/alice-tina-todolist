@@ -20,17 +20,19 @@ function App() {
   const [themeColor, setThemeColor] = useState("purple");
   const newID = useRef(1);
 
+  console.log(idList);
+  console.log(listItems);
+
   useEffect(() => {
     const localItems = JSON.parse(localStorage.getItem("listItems"));
     const localThemeColor = JSON.parse(localStorage.getItem("themeColor"));
 
     if (localItems) {
       const keys = Object.keys(localItems);
-      if (keys.length !== 0) {
-        newID.current = Number(keys[keys.length - 1]) + 1;
-        setListItems(localItems);
-        setIdList(keys);
-      }
+
+      newID.current = Number(keys[keys.length - 1]) + 1;
+      setListItems(localItems);
+      setIdList(keys);
     }
 
     if (localThemeColor) {

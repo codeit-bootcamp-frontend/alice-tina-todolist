@@ -39,7 +39,7 @@ main {
   display: flex;
   flex-direction: column;
   gap: 4rem;
-  height: 100%;
+  padding-bottom: 3rem;
   margin-top: 3rem;
   overflow: auto;
   -ms-overflow-style: none;
