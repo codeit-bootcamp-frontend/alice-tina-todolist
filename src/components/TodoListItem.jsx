@@ -65,7 +65,7 @@ function TodoListItem({ id, listItem, onInputChange, onCheckedChange, onDelete, 
         )}
       </div>
       <div className="check-delete-box">
-        {listItem.checked ? getCheckedCircle() : <img className="circle-icon" src={emptyCircleIcon} onClick={handleCheckedChange} />}
+        {listItem.checked ? getCheckedCircle() : <img className="check" src={emptyCircleIcon} onClick={handleCheckedChange} />}
         <img className="delete" src={deleteIcon} onClick={handleDelete} />
       </div>
     </div>

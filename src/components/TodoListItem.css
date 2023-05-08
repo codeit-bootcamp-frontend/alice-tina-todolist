@@ -27,6 +27,11 @@
   gap: 3rem;
 }
 
+.check,
+.delete {
+  cursor: pointer;
+}
+
 .list-item-input:focus {
   outline: none;
   border-bottom: 1px solid black;
