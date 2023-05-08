@@ -3,7 +3,7 @@ import purpleAddBtn from "/src/assets/purple-add-button.svg";
 import blueAddBtn from "/src/assets/blue-add-button.svg";
 import pinkAddBtn from "/src/assets/pink-add-button.svg";
 
-function AddButton({ onShow, color }) {
+function AddButton({ onShow, color = "purple" }) {
   const handleShowModal = () => {
     onShow(true);
   };
