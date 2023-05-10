@@ -1,0 +1,21 @@
+.add-button {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  cursor: pointer;
+  transition: transform 0.3s linear;
+}
+
+.add-button:hover {
+  transform: translate(-50%, 50%) rotate(90deg);
+}
+
+.dark-background {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+}

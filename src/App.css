@@ -1,0 +1,63 @@
+#root {
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 50rem;
+  min-height: 50rem;
+  max-height: 55rem;
+  background-color: #ffffff;
+  margin: 0 auto;
+  padding: 4rem 4rem 5rem;
+  border-radius: 1.6rem;
+  position: relative;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.button-more {
+  cursor: pointer;
+}
+
+main {
+  margin-left: 0.8rem;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.5rem;
+  overflow: auto;
+}
+
+.list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  padding-bottom: 3rem;
+  margin-top: 3rem;
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.list-container::-webkit-scrollbar {
+  display: none;
+}
+
+.ddopi {
+  width: 50%;
+  margin: 2rem auto 0;
+}
+
+.intro {
+  font-family: "Gaegu", cursive;
+  font-size: 2.4rem;
+  display: block;
+  margin: 2rem auto;
+}
